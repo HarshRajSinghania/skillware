@@ -4,6 +4,18 @@ When adding **Usage Examples** to `docs/skills/<category>/<skill>.md`, include s
 
 Add **Recommended install:** `pip install "skillware[<category>_<skill>]"` near the top of every catalog page (use the registry ID with `/` replaced by `_`, even when the extra is empty today). Add the intent block (**Solves**, **Works with**, **Runtime**) immediately after the version metadata markers.
 
+For the version metadata block, use a scannable bulleted list so each dimension renders on its own line in GitHub Markdown:
+
+```markdown
+<!-- skill-doc-meta:begin -->
+- **Version**: `0.1.2` — 16 Oct 2026
+- **Tier**: `core`
+- **Shape**: `workflow`
+- **Target**: `software`
+- **Tags**: `pdf`, `form_filling`, `documents`, `acrobat`
+<!-- skill-doc-meta:end -->
+```
+
 For Gemini sections, ensure the dispatch matches the sanitized tool name (e.g. `SkillLoader._sanitize_gemini_tool_name(bundle["manifest"]["name"])` or adapter-derived name) rather than the raw registry ID with slashes. Do not manually wrap the tool output in `types.Tool(function_declarations=[...])`, as `to_gemini_tool()` already returns a `types.Tool` object.
 
 Link to [agent_loops.md](agent_loops.md), [skill_chaining.md](skill_chaining.md) (multi-skill hosts), [install_extras.md](install_extras.md), and [README.md](README.md). List skill-specific env vars in an **Environment** table; link to [api_keys.md](api_keys.md) for setup.
